@@ -4,11 +4,13 @@ import Food from "@/components/Food";
 
 export async function getServerSideProps() {
 
+  const URL = "http://localhost:12619";
+
   const agent = new https.Agent({
     rejectUnauthorized: false
   });
   const api = axios.create({
-    baseURL: 'http://localhost:12619/foods',
+    baseURL: URL + '/foods',
     httpsAgent: agent
   });
   const {data} = await api.get("/getAll")
